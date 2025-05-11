@@ -1,13 +1,16 @@
 # astraXtransformer
 
-# ![AstraXTransformer Logo](images/astrax-logo.png)  
+# ![AstraXTransformer Logo](images/astrax-logo.png)
+
+2. [Features](#features)![download (1)](https://github.com/user-attachments/assets/4554f1ea-1f0e-4dda-86e6-63c15481d8ea)
+
 **AstraXTransformer**  
 State-of-the-art Transformer for general-purpose AI tasks, with rotary positional encoding, memory mechanisms, and reinforcement learning-based fine-tuning.
 
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
-2. [Features](#features)![download (1)](https://github.com/user-attachments/assets/4554f1ea-1f0e-4dda-86e6-63c15481d8ea)
+
 
 3. [Installation](#installation)
 4. [Usage](#usage)
