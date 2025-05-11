@@ -1,6 +1,5 @@
 # astraXtransformer
 
-# ![AstraXTransformer Logo](images/astrax-logo.png)
 
 ![astraX](https://github.com/user-attachments/assets/fed5c94d-b529-4850-b094-8b93ef8e2803)
 
