@@ -102,7 +102,7 @@ output = model.generate(input_text)
 
 # Safety check (Example)
 if "dangerous" in output:
-    output = "I'm sorry, but I cannot generate this type of content."
+output = "I'm sorry, but I cannot generate this type of content."
 print(output)
 
 
@@ -118,3 +118,27 @@ Commit your changes (git commit -m 'Add new feature').
 Push to the branch (git push origin feature/your-feature).
 
 Submit a pull request.
+
+
+Based on the available information, AstraXTransformer is a fine-tuned version of EleutherAI's GPT-Neo 125M model. Given its relatively small size and limited public documentation, it may not be directly comparable to larger, more advanced decoder-only transformer models like those in the GPT, LLaMA, Mistral, and Gemma families.
+
+However, for illustrative purposes, here's a comparative overview of AstraXTransformer alongside some prominent decoder-only transformer models:
+
+| **Model           | **Family** | **Architecture** | **Parameters** | **Training Objective**       | **Applications**                            | **Notable Features**                                                        |                                                                  |
+| --------------------- | ---------- | ---------------- | -------------- | ---------------------------- | ------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **GPT-3**             | GPT        | Decoder-only     | 175B           | Language Modeling            | Text generation, summarization, translation | Large-scale model with strong zero-shot and few-shot learning capabilities. |                                                                  |
+| **LLaMA 2**           | LLaMA      | Decoder-only     | 7B–70B         | Language Modeling            | Multilingual tasks, research applications   | Open-source model optimized for efficiency and accessibility.               |                                                                  |
+| **Mistral 7B**        | Mistral    | Decoder-only     | 7B             | Language Modeling            | General-purpose NLP tasks                   | Efficient model with high performance on various benchmarks.                |                                                                  |
+| **Gemma**             | Gemma      | Decoder-only     | Varies         | Language Modeling            | Multilingual and domain-specific tasks      | Focused on adaptability across languages and domains.                       |                                                                  |
+| **AstraXTransformer** | GPT-Neo    | Decoder-only     | 125M           | Fine-tuned Language Modeling | Specific tasks as per fine-tuning           | Fine-tuned version of GPT-Neo 125M; limited public information available.   | ([Hugging Face][2], [Amatria][3], [arXiv][4], [Hugging Face][5]) |
+
+**Why AstraXTransformer Might Be Considered Notable:**
+
+* **Fine-Tuning for Specific Tasks**: While details are scarce, fine-tuning can tailor a model to excel in particular domains or tasks, potentially offering advantages over general-purpose models in those areas.
+
+* **Resource Efficiency**: With 125 million parameters, AstraXTransformer is significantly smaller than models like GPT-3, making it more accessible for deployment in environments with limited computational resources.
+
+* **Foundation on GPT-Neo**: Being based on GPT-Neo, an open-source alternative to GPT-3, AstraXTransformer benefits from the architectural strengths of its predecessor.
+
+
+
