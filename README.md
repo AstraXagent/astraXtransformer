@@ -110,27 +110,26 @@ output = "I'm sorry, but I cannot generate this type of content."
 print(output)
 
 
-Contributions
-We welcome contributions to AstraXTransformer! To contribute:
+**Contributions**
+***We welcome contributions to AstraXTransformer! To contribute:***
 
-Fork the repository.
+***Fork the repository.***
 
-Create a branch (git checkout -b feature/your-feature).
+***Create a branch (git checkout -b feature/your-feature).***
 
-Commit your changes (git commit -m 'Add new feature').
+***Commit your changes (git commit -m 'Add new feature').***
 
-Push to the branch (git push origin feature/your-feature).
+***Push to the branch (git push origin feature/your-feature).***
 
-Submit a pull request.
+***Submit a pull request.***
 
-
-Based on the available information, AstraXTransformer is a fine-tuned version of EleutherAI's GPT-Neo 125M model. Given its relatively small size and limited public documentation, it may not be directly comparable to larger, more advanced decoder-only transformer models like those in the GPT, LLaMA, Mistral, and Gemma families.
+AstraXTransformer is a fine-tuned version of EleutherAI's GPT-Neo 125M model. Given its relatively small size and limited public documentation, it may not be directly comparable to larger, more advanced decoder-only transformer models like those in the GPT, LLaMA, Mistral, and Gemma families.
 
 However, for illustrative purposes, here's a comparative overview of AstraXTransformer alongside some prominent decoder-only transformer models:
 
-| **Model           | **Family** | **Architecture** | **Parameters** | **Training Objective**       | **Applications**                            | **Notable Features**                                                        |                                                                  |
-| --------------------- | ---------- | ---------------- | -------------- | ---------------------------- | ------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| **GPT-3**             | GPT        | Decoder-only     | 175B           | Language Modeling            | Text generation, summarization, translation | Large-scale model with strong zero-shot and few-shot learning capabilities. |                                                                  |
+| **Model              | **Family** | **Architecture** | **Parameters** | **Training Objective**       | **Applications**                            | **Notable Features**                                                        |                                                                  |
+| ---------------------  | ---------- | ---------------- | -------------- | ---------------------------- | ------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **GPT-3**              | GPT        | Decoder-only     | 175B           | Language Modeling            | Text generation, summarization, translation | Large-scale model with strong zero-shot and few-shot learning capabilities. |                                                                  |
 | **LLaMA 2**           | LLaMA      | Decoder-only     | 7B–70B         | Language Modeling            | Multilingual tasks, research applications   | Open-source model optimized for efficiency and accessibility.               |                                                                  |
 | **Mistral 7B**        | Mistral    | Decoder-only     | 7B             | Language Modeling            | General-purpose NLP tasks                   | Efficient model with high performance on various benchmarks.                |                                                                  |
 | **Gemma**             | Gemma      | Decoder-only     | Varies         | Language Modeling            | Multilingual and domain-specific tasks      | Focused on adaptability across languages and domains.                       |                                                                  |
