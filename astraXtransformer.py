@@ -3,8 +3,11 @@ import torch.nn as nn
 import torch.nn.functional as F
 import math
 import random
+from stable_baselines3 import PPO
+from stable_baselines3.common.envs import DummyVecEnv
+from stable_baselines3.common import logger
 
-# Helper: Rotary Positional Encoding
+# Helper: Rotary Positional Encoding (same as before)
 class RotaryPositionalEncoding(nn.Module):
     def __init__(self, d_model, max_len=5000):
         super().__init__()
@@ -20,7 +23,7 @@ class RotaryPositionalEncoding(nn.Module):
         pe[:, 1::2] = torch.cos(positions * div_term)
         return x + pe[:seq_len].unsqueeze(0)
 
-# Embedding Layer with Rotary Positional Encoding
+# Embedding Layer with Rotary Positional Encoding (same as before)
 class EmbeddingWithRotaryPositionalEncoding(nn.Module):
     def __init__(self, vocab_size, d_model, max_len=5000):
         super().__init__()
@@ -31,7 +34,7 @@ class EmbeddingWithRotaryPositionalEncoding(nn.Module):
         embedded = self.embedding(x)
         return self.rotary_pos_enc(embedded)
 
-# Memory Mechanism (Long-term and Short-term Memory)
+# Memory Mechanism (same as before)
 class Memory(nn.Module):
     def __init__(self, d_model, memory_type="long_term"):
         super().__init__()
@@ -49,7 +52,7 @@ class Memory(nn.Module):
             return memory_out
         return x
 
-# Scaled Dot-Product Attention (with Rotary Positional Encoding)
+# Scaled Dot-Product Attention (same as before)
 def scaled_dot_product_attention(q, k, v, mask=None):
     d_k = q.size(-1)
     scores = torch.matmul(q, k.transpose(-2, -1)) / math.sqrt(d_k)
@@ -59,7 +62,7 @@ def scaled_dot_product_attention(q, k, v, mask=None):
     output = torch.matmul(attn, v)
     return output, attn
 
-# Multi-Head Attention Layer
+# Multi-Head Attention Layer (same as before)
 class MultiHeadAttention(nn.Module):
     def __init__(self, d_model, num_heads):
         super().__init__()
@@ -79,7 +82,7 @@ class MultiHeadAttention(nn.Module):
         concat = scores.transpose(1, 2).contiguous().view(bs, -1, self.num_heads * self.d_k)
         return self.out(concat)
 
-# Feed Forward Network
+# Feed Forward Network (same as before)
 class FeedForward(nn.Module):
     def __init__(self, d_model, d_ff, dropout=0.1):
         super().__init__()
@@ -90,7 +93,7 @@ class FeedForward(nn.Module):
     def forward(self, x):
         return self.linear2(self.dropout(F.relu(self.linear1(x))))
 
-# Encoder Layer
+# Encoder Layer (same as before)
 class EncoderLayer(nn.Module):
     def __init__(self, d_model, num_heads, d_ff, dropout=0.1):
         super().__init__()
@@ -105,7 +108,7 @@ class EncoderLayer(nn.Module):
         x = self.norm2(x + self.dropout(self.ff(x)))
         return x
 
-# Decoder Layer
+# Decoder Layer (same as before)
 class DecoderLayer(nn.Module):
     def __init__(self, d_model, num_heads, d_ff, dropout=0.1):
         super().__init__()
@@ -123,7 +126,7 @@ class DecoderLayer(nn.Module):
         x = self.norm3(x + self.dropout(self.ff(x)))
         return x
 
-# Safety Layer (to detect harmful content generation)
+# Safety Layer (same as before)
 class SafetyLayer(nn.Module):
     def __init__(self):
         super().__init__()
@@ -136,7 +139,7 @@ class SafetyLayer(nn.Module):
                 raise ValueError("Harmful content detected!")
         return x
 
-# Full AstraX Transformer Model
+# Full AstraX Transformer Model (with RL Integration)
 class AstraXTransformer(nn.Module):
     def __init__(self, src_vocab, tgt_vocab, d_model=512, N=6, heads=8, d_ff=2048, dropout=0.1, memory_type="long_term"):
         super().__init__()
@@ -173,7 +176,7 @@ class AstraXTransformer(nn.Module):
         # Output layer
         return self.fc_out(dec_out)
 
-# Example of initializing the model
+# Example of initializing and fine-tuning the model with RL
 if __name__ == "__main__":
     # Hyperparameters
     SRC_VOCAB_SIZE = 10000
@@ -189,8 +192,14 @@ if __name__ == "__main__":
 
     # Example random input data for training
     src = torch.randint(0, SRC_VOCAB_SIZE, (32, 10))  # batch_size=32, seq_len=10
-    tgt = torch.randint(0, TGT_VOCAB_SIZE, (32, 10))  # batch_size=32, seq_len=10
+    tgt = torch.randint(0, TGT_VOCAB_SIZE, (32, 10))
 
-    # Forward pass
-    output = astrax_transformer(src, tgt)
-    print(output.shape)
+    # Dummy training loop with RL agent
+    env = DummyVecEnv([lambda: astrax_transformer])  # Wrap the model in a Gym environment for RL
+    model = PPO("MlpPolicy", env, verbose=1)  # Initialize PPO model
+
+    # Train the model using RL
+    model.learn(total_timesteps=10000)  # Train for 10000 timesteps
+
+    # Fine-tuning the model after RL (task-specific)
+    # Task-specific fine-tuning could involve supervised learning with task-oriented datasets
